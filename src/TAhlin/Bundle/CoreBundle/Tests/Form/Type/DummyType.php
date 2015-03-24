@@ -40,6 +40,6 @@ class DummyType extends AbstractType
      */
     public function getName()
     {
-        return 'session_core_dummy';
+        return 'ahlin_core_dummy';
     }
 }

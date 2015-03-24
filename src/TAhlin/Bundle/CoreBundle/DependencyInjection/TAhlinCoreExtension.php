@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class SessionCoreExtension extends Extension
+class TAhlinCoreExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -36,6 +36,6 @@ class SessionCoreExtension extends Extension
      */
     public function getAlias()
     {
-        return 'session_core';
+        return 'ahlin_core';
     }
 }
