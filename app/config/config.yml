@@ -11,3 +11,10 @@ framework:
     profiler:        { only_exceptions: false }
     templating:
         engines: ['twig']
+
+doctrine:
+    dbal:
+        charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true

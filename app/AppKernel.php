@@ -13,7 +13,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new TAhlin\Bundle\CoreBundle\TAhlinCoreBundle(),
+            new Ahlin\Bundle\CoreBundle\AhlinCoreBundle(),
         );
     }
 
@@ -27,7 +27,7 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        return sys_get_temp_dir().'/TAhlinCoreBundle/cache';
+        return sys_get_temp_dir().'/AhlinCoreBundle/cache';
     }
 
     /**
@@ -35,6 +35,6 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        return sys_get_temp_dir().'/TAhlinCoreBundle/logs';
+        return sys_get_temp_dir().'/AhlinCoreBundle/logs';
     }
 }
