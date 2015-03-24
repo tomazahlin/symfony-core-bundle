@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="session_core.data" class="TAhlin\DataFixtures\Generator\Data" public="false" />
+        <service id="session_core.default_data" alias="session_core.data" />
+
+        <service id="session_core.generator" class="TAhlin\DataFixtures\Generator\Generator">
+            <argument type="service" id="session_core.default_data" />
+        </service>
+        <service id="session_core.form_handler" class="TAhlin\Bundle\CoreBundle\Form\Handler\FormHandler">
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="request_stack" />
+        </service>
+
+        <service id="session_core.container_aware" class="Symfony\Component\DependencyInjection\ContainerAware" abstract="true">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="session_core.entity_manager" alias="doctrine.orm.default_entity_manager" />
+
+    </services>
+
+</container>

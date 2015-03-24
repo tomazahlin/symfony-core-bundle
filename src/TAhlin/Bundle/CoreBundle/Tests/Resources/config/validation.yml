@@ -1,0 +1,29 @@
+TAhlin\Bundle\CoreBundle\Tests\Entity\Dummy:
+    properties:
+        name:
+            - NotBlank: { message: 'Name can not be blank.' }
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Name must be at least {{ limit }} characters long."
+        check:
+            - Type: { type: bool, message: 'This must be a valid boolean.'}
+        email:
+            - Email: { message: 'The email {{ value }} is not a valid email.' }
+        countOne:
+            - Type: { type: integer, message: 'This must be a valid number.'}
+            - Range:
+                min: 0
+                minMessage: 'Count one value ({{ value }}) must be equal or more than {{ limit }}.'
+                max: 100
+                maxMessage: 'Count one value ({{ value }}) must be equal or less than {{ limit }}.'
+        countTwo:
+            - Type: { type: integer, message: 'This must be a valid number.'}
+            - Range:
+                min: 0
+                minMessage: 'Count two value ({{ value }}) must be equal or more than {{ limit }}.'
+                max: 100
+                maxMessage: 'Count two value ({{ value }}) must be equal or less than {{ limit }}.'
+    getters:
+        countTwoBigger:
+            - "True": { message: 'Count two must be bigger than count one.' }
