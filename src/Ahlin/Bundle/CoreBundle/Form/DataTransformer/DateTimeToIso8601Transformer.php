@@ -45,12 +45,15 @@ class DateTimeToIso8601Transformer implements DataTransformerInterface
      * Transformation will return ISO8601 format from the datetime
      * @param  DateTime $datetime
      * @return string
+     * @throws FormValidationException
      */
     public function transform($datetime)
     {
         if ($datetime instanceof DateTime) {
             return $datetime->format(DateTime::ISO8601);
         }
-        return '';
+        $exception = new FormValidationException();
+        $exception->setError($this->formFieldName, 'Not a DateTime object.');
+        throw $exception;
     }
 }

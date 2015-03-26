@@ -13,13 +13,23 @@ class Iso8601Validator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        if ($value instanceof DateTime) {
-            $value = $value->format(DateTime::ISO8601);
-        }
         if (!(preg_match('/^(\d{4})-(\d{2})-(\d{2})(T|\s)(\d{2}):(\d{2}):(\d{2})(Z|(\+|-|\s)\d{2}(:?\d{2})?)$/', $value) > 0)) {
-            $this->context
-                ->buildViolation($constraint->message)
-                ->addViolation();
+            $this->createViolation($constraint);
+        } else {
+            $dateTime = DateTime::createFromFormat(DateTime::ISO8601, $value);
+            if ($value !== $dateTime->format(DateTime::ISO8601)) {
+                $this->createViolation($constraint);
+            }
         }
+    }
+
+    /**
+     * Creates a violation
+     * @param Constraint $constraint
+     */
+    private function createViolation(Constraint $constraint) {
+        $this->context
+            ->buildViolation($constraint->message)
+            ->addViolation();
     }
 }
