@@ -40,8 +40,7 @@ class DateTimeToIso8601TransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests that transformer throws an exception if invalid value is provided for transformation
      * @group transformer
-     * @expectedException \Ahlin\Bundle\CoreBundle\Exception\FormValidationException
-     * @expectedExceptionMessage Validation error.
+     * @expectedException \Symfony\Component\Form\Exception\TransformationFailedException
      * @dataProvider getInvalidDataPairs
      * @param $data
      */
@@ -54,8 +53,7 @@ class DateTimeToIso8601TransformerTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests that transformer throws an exception if invalid value is provided for reverse transformation
      * @group transformer
-     * @expectedException \Ahlin\Bundle\CoreBundle\Exception\FormValidationException
-     * @expectedExceptionMessage Validation error.
+     * @expectedException \Symfony\Component\Form\Exception\TransformationFailedException
      * @dataProvider getInvalidDataPairs
      * @param $data
      */
@@ -79,7 +77,6 @@ class DateTimeToIso8601TransformerTest extends \PHPUnit_Framework_TestCase
     static function getInvalidDataPairs()
     {
         return array(
-            array('data' => array('datetime' => null,   'string' => 0)), # Too less
             array('data' => array('datetime' => 'now',  'string' => 'test')),
             array('data' => array('datetime' => time(), 'string' => 2000000000000000000)), # Too much
         );
